@@ -27,7 +27,7 @@ function plugin(opts) {
                 var imagesFound = html.match(imageRegex);
 
                 if (imagesFound) {
-                    totalImagesFixed += html.match(imageRegex).length;
+                    totalImagesFixed += imagesFound.length;
                     var newContent = html.replace(imageRegex, '<img loading="lazy"$1 />');
                     data.contents = Buffer.from(newContent);
                 }
