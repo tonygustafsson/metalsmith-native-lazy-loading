@@ -27,9 +27,10 @@ function plugin(opts) {
                 var imagesFound = html.match(imageRegex);
 
                 if (imagesFound) {
-                    totalImagesFixed += imagesFound.length;
-                    var newContent = html.replace(imageRegex, '<img loading="lazy"$1 />');
+                    var newContent = html.replace(imageRegex, '<img $1 loading="lazy" />');
                     data.contents = Buffer.from(newContent);
+
+                    totalImagesFixed += imagesFound.length;
                 }
             }
         });
