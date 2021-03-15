@@ -16,5 +16,8 @@
     "url": "https://github.com/tonygustafsson/metalsmith-native-lazy-loading/issues"
   },
   "homepage": "https://github.com/tonygustafsson/metalsmith-native-lazy-loading#readme",
-  "dependencies": {}
+  "devDependencies": {
+    "cheerio": "^1.0.0-rc.5",
+    "metalsmith-debug": "^1.2.0"
+  }
 }
