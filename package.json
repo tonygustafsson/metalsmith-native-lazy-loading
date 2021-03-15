@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-native-lazy-loading",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "A metalsmith plugin for adding browser native lazy loading to images",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "url": "https://github.com/tonygustafsson/metalsmith-native-lazy-loading/issues"
   },
   "homepage": "https://github.com/tonygustafsson/metalsmith-native-lazy-loading#readme",
-  "devDependencies": {
+  "dependencies": {
     "cheerio": "^1.0.0-rc.5",
     "metalsmith-debug": "^1.2.0"
   }
