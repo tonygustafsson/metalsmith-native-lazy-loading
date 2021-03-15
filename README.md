@@ -41,7 +41,7 @@ You then use it like so;
 ```javascript
 Metalsmith(__dirnam).use(
     imageLazyLoading({
-        pattern: ['**/*.png', '**/*.jpg', '**/*.webp'],
+        pattern: ['**/*.html'],
     })
 );
 ```
