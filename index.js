@@ -1,5 +1,6 @@
 var debug = require('debug')('metalsmith:nativeLazyLoading');
 var multimatch = require('multimatch');
+var cheerio = require('cheerio');
 
 module.exports = plugin;
 
@@ -7,7 +8,6 @@ function plugin(opts) {
     opts.pattern = opts.pattern || '**/*.html';
 
     var totalImagesFixed = 0;
-    var imageRegex = /<img(.*?)>/g;
 
     return function (files, metalsmith, done) {
         setImmediate(done);
@@ -20,22 +20,25 @@ function plugin(opts) {
                     return;
                 }
 
-                var html = data.contents.toString();
-
                 debug('nativeLazyLoading working on: %s', file);
 
-                var imagesFound = html.match(imageRegex);
+                // Create DOM from HTML string
+                var $ = cheerio.load(data.contents.toString());
 
-                if (imagesFound) {
-                    var newContent = html.replace(imageRegex, '<img $1 loading="lazy" />');
-                    data.contents = Buffer.from(newContent);
+                // Find all images that is missing loading attribute
+                var $imagesWithoutLoadingDefined = $('img:not([loading])');
 
-                    totalImagesFixed += imagesFound.length;
-                }
+                // Add loading lazy to all images
+                $imagesWithoutLoadingDefined.attr('loading', 'lazy');
+
+                // Save it
+                data.contents = Buffer.from($.html());
+
+                totalImagesFixed += $imagesWithoutLoadingDefined.length;
             }
         });
 
-        debug('nativeLazyLoading done. Fixed a total of ' + totalImagesFixed + ' images.');
+        debug('nativeLazyLoading done. Added lazy loading to ' + totalImagesFixed + ' images.');
         done();
     };
 }
