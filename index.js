@@ -30,7 +30,7 @@ function plugin(opts) {
                 var $ = cheerio.load(data.contents.toString());
 
                 // Find all images in articles that is missing loading attribute
-                var $imagesWithoutLoadingDefined = $('.article__content img:not([loading])');
+                var $imagesWithoutLoadingDefined = $(opts.selector + ' img:not([loading])');
 
                 // Add loading lazy to all images
                 $imagesWithoutLoadingDefined.attr('loading', 'lazy');
