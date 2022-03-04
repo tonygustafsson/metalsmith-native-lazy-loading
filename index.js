@@ -10,6 +10,7 @@ function plugin(opts) {
 
     // make sure that the default required options are filled in
     opts.pattern = opts.pattern || '**/*.html';
+    opts.selector = opts.selector || '';
 
     var totalImagesFixed = 0;
 
