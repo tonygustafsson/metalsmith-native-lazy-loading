@@ -1,4 +1,4 @@
-var debug = require('debug')('metalsmith:nativeLazyLoading');
+var debug = require('metalsmith-debug')('metalsmith:nativeLazyLoading');
 var multimatch = require('multimatch');
 var cheerio = require('cheerio');
 
