@@ -5,6 +5,10 @@ var cheerio = require('cheerio');
 module.exports = plugin;
 
 function plugin(opts) {
+    // check if there are any options passed
+    opts = opts || {};
+
+    // make sure that the default required options are filled in
     opts.pattern = opts.pattern || '**/*.html';
 
     var totalImagesFixed = 0;
