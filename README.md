@@ -42,8 +42,16 @@ You then use it like so;
 Metalsmith(__dirnam).use(
     imageLazyLoading({
         pattern: ['**/*.html'],
+        selector: '.article__content',
     })
 );
 ```
 
 That's all there is to it.
+
+### Options
+
+| Key | Description | default |
+|-----|-------------|---------|
+| pattern | Pattern to select files to handle | `**/*.html` |
+| selector | Css selector to refine image replacement. This is appended with ` img:not([loading])` |  |
